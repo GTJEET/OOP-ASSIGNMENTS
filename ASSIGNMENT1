@@ -20,7 +20,7 @@ struct books                                    /*DEFINED A STRUCTURE NAMED BOOK
     char author[30];
     int price;
     int copies;
-}b[10];
+}b[10];                                         /*Declared the structure's max list size as 10*/
 
 
 void book_details()                             /*Function 'book_details' has been declared*/
