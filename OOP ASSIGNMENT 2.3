@@ -33,18 +33,26 @@ void Min(int *var1, int var2)                   //Min() function finds the Minim
     cout << "\nMIN MARKS IN class = " << var1[0];
 }
 
-int main(){
-    int arr[10];
+int main()
+{
+    int arr[40];
     int i, size;
     cout << "\nENTER THE NUMBER OF STUDENTS : ";        //let's the user choose class size
     cin >> size;
-    for(i = 0; i < size; ++i)
+    if (size > 40)
     {
-       cout << "Enter marks " << i + 1 << " : ";        
-       cin >> arr[i];
+        cout << "ENTER CLASS SIZE LESSER THAN FORTY STUDENTS FOR STORING MARKS."
     }
     
-    Max(arr, size);                                     // prints out the maximum marks using Max() function using call by reference of array containing marks
-    Min(arr, size);                                     // prints out the minimum marks using Min() function using call by reference of array containing marks
+    else
+        {
+            for(i = 0; i < size; ++i)
+            {
+                cout << "Enter marks " << i + 1 << " : ";        
+                cin >> arr[i];
+            }
+    
+            Max(arr, size);                         // prints out the maximum marks using Max() function using call by reference of array containing marks
+            Min(arr, size);                         // prints out the minimum marks using Min() function using call by reference of array containing marks
+        }
 }
-
