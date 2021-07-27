@@ -1,0 +1,50 @@
+/******************************************************************************
+
+                                    Welcome to GDB Online.
+    GDB online is an online compiler and debugger tool for C, C++, Python, Java, PHP, Ruby, Perl,
+    C#, VB, Swift, Pascal, Fortran, Haskell, Objective-C, Assembly, HTML, CSS, JS, SQLite, Prolog.
+                    Code, Compile, Run and Debug online from anywhere in world.
+
+*******************************************************************************/
+#include <iostream>
+
+using namespace std;
+
+void Max(int *var1, int var2)                       //Max() function finds the Maximum marks from the array
+{
+    int i;
+    for(i = 1; i < var2 ; ++i)
+    {
+       if(var1[0] < var1[i])                        //compares values and places max marks in the array at the first position
+       var1[0] = var1[i];
+    }
+    
+    cout << "\nMAX MARKS IN class = " << var1[0];
+}
+
+void Min(int *var1, int var2)                   //Min() function finds the Minimum marks from the array
+{
+    int i;
+    for(i = 1; i < var2 ; i++)
+    {
+       if(var1[0] > var1[i])                    //compares values and places min marks in the array at the first position
+       var1[0] = var1[i];
+    }
+    cout << "\nMIN MARKS IN class = " << var1[0];
+}
+
+int main(){
+    int arr[10];
+    int i, size;
+    cout << "\nENTER THE NUMBER OF STUDENTS : ";        //let's the user choose class size
+    cin >> size;
+    for(i = 0; i < size; ++i)
+    {
+       cout << "Enter marks " << i + 1 << " : ";        
+       cin >> arr[i];
+    }
+    
+    Max(arr, size);                                     // prints out the maximum marks using Max() function using call by reference of array containing marks
+    Min(arr, size);                                     // prints out the minimum marks using Min() function using call by reference of array containing marks
+}
+
