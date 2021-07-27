@@ -1,0 +1,96 @@
+#include <iostream>
+#include <string>
+
+using namespace std;
+ 
+short int sum(short int a, short int b);
+int sum(int a, int b);
+float sum(float a, float b);
+double sum(double a, double b);
+long double sum(long double a, long double b);
+long int sum(long int a, long int b);
+string sum(string a, string b);
+
+//defined a bunch of functions with different types for addition of variables with same data types
+
+int main()
+{
+    short int si1,si2;
+    int i1, i2;
+    float f1, f2;
+    double d1, d2;
+    long double ld1, ld2;
+    long int li1, li2;
+    string s1, s2;
+    
+    cout << "********** PROGRAM TO ADD TWO DIFFERENT TYPES OF NUMBERS ***********";
+    
+    cout << "\n\nENTER TWO SHORT TYPE VALUES: " << endl;        
+    cin >> si1 >> si2;
+    cout << "THE ADDITION IS : " << sum(si1,si2);
+    
+    cout << "\n\nENTER TWO INTEGER TYPE VALUES: " << endl;
+    cin >> i1 >> i2;
+    cout << "THE ADDITION IS : " << sum(i1, i2);
+    
+    cout << "\n\nENTER TWO FLOAT TYPE VALUES : "<< endl;
+    cin >> f1 >> f2;
+    cout << "THE ADDITION IS : " << sum(f1, f2);
+    
+    cout << "\n\nENTER TWO DOUBLE TYPE VALUES : " << endl;
+    cin >> d1 >> d2;
+    cout << "THE ADDITION IS : " << sum(d1, d2);
+    
+    cout << "\n\nENTER TWO LONG DOUBLE TYPE VALUES : " << endl;
+    cin >> ld1 >> ld2;
+    cout << "THE ADDITION IS : " << sum(ld1, ld2);
+    
+    cout << "\n\nENTER TWO LONG INT TYPE VALUES : " << endl;
+    cin >> li1 >> li2;
+    cout << "THE ADDITION IS : " << sum(li1, li2);
+    
+    cout << "\n\nENTER 2 CHARACTERS : "<<endl;
+    cin >> s1 >> s2; 
+    cout << "THE CONCATENATION OF THE CHARACTERS IS : " << sum(s1,s2);
+    
+}
+
+
+short int sum(short int a, short int b)
+{
+    return a + b;                               //returns short int output within short int scope
+}
+
+int sum(int a, int b)
+{
+    return a + b;                               //returns int output within int scope
+}
+
+float sum(float a, float b)
+{
+    return a + b;                               //returns float output within float scope
+}
+
+double sum(double a, double b)
+{
+    return a + b;                               //returns double output within double scope
+}
+
+long double sum(long double a, long double b)   
+{
+    return a + b;                               //returns long double output within long double scope
+}
+
+long int sum(long int a, long int b)
+{
+    return a + b;                               //returns long int output within lont int scope
+}
+
+string sum(string a, string b)
+{
+    string c = a + b;
+    return c;                                   //returns string output within string scope
+}
+
+
+
