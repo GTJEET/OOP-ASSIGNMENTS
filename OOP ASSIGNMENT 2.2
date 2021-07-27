@@ -1,0 +1,60 @@
+/******************************************************************************
+
+                            Welcome to GDB Online.
+GDB online is an online compiler and debugger tool for C, C++, Python, PHP, Ruby, 
+        C#, VB, Perl, Swift, Prolog, Javascript, Pascal, HTML, CSS, JS
+        Code, Compile, Run and Debug online from anywhere in world.
+
+*******************************************************************************/
+#include <iostream>
+using namespace std;
+
+float pi = 3.14;                                                //using global variable pi = 3.14
+
+float cube(float a)                                             //function to calculate the volume of cube of side a
+{
+    cout << "\n\nENTER THE LENGTH OF A SIDE OF THE CUBE : ";
+    cin >> a;
+    float vol = a*a*a;
+    return vol;                                                 //returns the volume of CUBE
+}
+
+float sphere(float r)                                           //function to calculate the volume of SPHERE
+{
+    cout << "\n\nENTER THE RADIUS OF THE SPHERE : ";
+    cin >> r;
+    float vol = (4*pi*r*r*r)/3;
+    return vol;                                                 //returns the volume of sphere
+}
+
+float cylinder(float r, float h)                                //function to calculate the volume of CYLINDER
+{
+    cout << "\n\nENTER THE RADIUS OF THE CYLINDER : ";
+    cin >> r;
+    cout << "ENTER THE HEIGHT OF THE CYLINDER : ";
+    cin >> h;
+    float vol = pi*r*r*h;
+    return vol;                                                 //returns the volume of cylinder
+}
+
+float cone(float r, float h)                                    //function to calculate the volume of CONE
+{
+    cout << "\n\nENTER THE RADIUS OF THE CONE : ";
+    cin >> r;
+    cout << "ENTER THE HEIGHT OF THE CONE : ";
+    cin >> h;
+    float vol = (pi*r*r*h)/3;
+    return vol;                                                 //returns the volume cone
+}
+
+
+int main()
+{   
+    float i, j, w, x, y, z; 
+    cout << "THE VOLUME OF THE CUBE IS " << cube(w);            //PRINTS the volume of the CUBE
+    cout << "THE VOLUME OF THE SPHERE IS " << sphere(x);        //PRINTS the volume of the SPHERE
+    cout << "\nTHE VOLUME OF THE CYLINDER IS " << cylinder(y,z);    //PRINTS the volume of the CYLINDER
+    cout << "\nTHE VOLUME OF THE CONE IS " << cone(i,j);            //PRINTS the volume of the CONE
+}
+
+
