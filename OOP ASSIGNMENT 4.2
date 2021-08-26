@@ -1,0 +1,103 @@
+/******************************************************************************
+
+                            Welcome to GDB Online.
+GDB online is an online compiler and debugger tool for C, C++, Python, PHP, Ruby, 
+        C#, VB, Perl, Swift, Prolog, Javascript, Pascal, HTML, CSS, JS
+          Code, Compile, Run and Debug online from anywhere in world.
+
+*******************************************************************************/
+#include<iostream> 
+using namespace std; 
+
+class CRICKETERS
+{ 
+    char name[40], region[20];                          //data members of class CRICKTERS declared
+    float batavg, bowlavg; 
+    
+    public: 
+        void readData() 
+        { 
+            cout<<"\nName of Player: "; 
+            cin>>name; 
+            cout<<"\nRegion (INDIA):"; 
+            cin>>region; 
+            cout<<"\nBatting Average Of Player: "; 
+            cin>>batavg; 
+            cout<<"\nBowling Average Of Player: "; 
+            cin>>bowlavg;
+            cout<<"DATA RECORDED\n";
+        }
+        
+        void sortList(CRICKETERS c[])                   
+        { 
+            CRICKETERS temp; 
+            for (int i=0;i<5;i++)                           //sorts list of CRICKETERS based on their batting average
+            { 
+                for (int j=0;j<5;j++) 
+                { 
+                    if (c[j].batavg<c[j+1].batavg) 
+                    { 
+                        temp=c[j]; 
+                        c[j]=c[j+1]; 
+                        c[j+1]=temp; 
+                    }    
+                } 
+            } 
+            
+            c[0].displayList(c); 
+            for (int i=0;i<5;i++)                           //sorts list of CRICKETERS based on their bowling average
+            { 
+                for (int j=0;j<5;j++) 
+                { 
+                    if (c[j].bowlavg>c[j+1].bowlavg) 
+                    { 
+                        temp = c[j]; 
+                        c[j] = c[j+1]; 
+                        c[j+1] = temp; 
+                    }
+                } 
+            }    
+            
+            c[0].displayList(c); 
+        } 
+        
+        void displayList(CRICKETERS c[]) 
+        { 
+            for (int i=0;i<5;i++) 
+            { 
+                cout<<"\n\nName:"<<c[i].name; 
+                cout<<"\nRegion:"<<c[i].region; 
+                cout<<"\nBatting Average:"<<c[i].batavg; 
+                cout<<"\nBowling Average:"<<c[i].bowlavg;
+                cout<<"\n\n";
+            } 
+        }
+        
+        void generateList(CRICKETERS c[]) 
+        { 
+            int x=0; 
+            for (int i=0;i<5;i++) 
+            { 
+                if (c[i].batavg>30 && c[i].bowlavg<25) 
+                { 
+                    cout<<c[i].name<<endl; 
+                    x=1; 
+                } 
+            } 
+            if (x==0) 
+            cout<<"No player from the given list has qualified to reach minimum goals."; 
+        } 
+}; 
+
+int main() 
+{ 
+    cout<<"*****CRICKET BOARD ASSOCIATION******";
+    CRICKETERS c[5]; 
+    for (int i=0;i<5;i++) 
+    { 
+        c[i].readData(); 
+    } 
+    c[0].sortList(c); 
+    c[0].generateList(c); 
+    return 0; 
+}
