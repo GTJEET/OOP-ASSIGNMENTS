@@ -1,0 +1,89 @@
+/******************************************************************************
+
+                               Welcome to GDB Online.
+GDB online is an online compiler and debugger tool for C, C++, Python, PHP, Ruby, 
+          C#, VB, Perl, Swift, Prolog, Javascript, Pascal, HTML, CSS, JS
+            Code, Compile, Run and Debug online from anywhere in world.
+
+*******************************************************************************/
+#include<iostream>
+using namespace std;
+
+class ELECTRCITY                                  //definition of class ELECTRICITY
+{
+    private:                                      //Access Specifier for the following is set to private
+        int c_no;
+        char c_name[50];
+        double bill;
+        char type[15]; 
+        int curunits;
+        int lastunits;
+        char month[10];
+        int units = curunits-lastunits;
+        
+     public:                                     //Access Specifier for the following is set to private
+        void readData()
+        {   
+            cout<<"*************NMIMS ELECTRCITY BOARD: ENTER CUSTOMER DETAILS BELOW********\n";
+            cout<<"Enter Customer Name: ";
+            cin>>c_name;
+            cout<<"\nEnter Customer Number: ";
+            cin>>c_no;
+            cout<<"\nEnter Consumer Type: ";
+            cin>>type;
+            cout<<"\nEnter Current Meter Reading: "; 
+            cin >> curunits; 
+            cout<<"\nEnter Last Meter Reading: "; 
+            cin >> lastunits; 
+            cout<<"\nEnter Billing Month: "; 
+            cin >> month;
+        }
+
+        void printBill()
+         {
+            cout<<"\n***CUSTOMER DATA***\n"<<endl;
+            cout<<"Customer Name is : "<<c_name;
+            cout<<"\nCustomer No. is : "<<c_no;
+            cout<<"\nCustomer Type is : "<<type;
+            cout<<"\nNumber of Units Consumed : "<<units;
+            cout<<"\nBill of Customer : "<<bill;
+         }
+
+        int calculateBill()
+        {   
+            int units = curunits-lastunits;
+            if(type == "Commercial")
+            {
+                if(units <= 200&&units>0)
+                {
+                    bill = units*5;
+                }
+                else if(units>200)
+                {
+                    bill = 1000 + (units-200)*10;
+                }
+                 
+            }
+        
+            else if(type == "Non-commercial")
+            {
+                if(units <= 100 && units>0)
+                {
+                   bill = units*3;
+                }
+                else if(units > 100)
+                {
+                    bill = 300 + ((units-100)*5);
+                }
+            }
+         }
+};
+
+int main()
+{
+    ELECTRCITY E;                             //class variable 'E' has been assignment
+    E.readData();                             //readData() function from class ELECTRICITY is being invoked
+    E.calculateBill();                        //calculateBill() function from class ELECTRICITY is being invoked
+    E.printBill();                            //printBill() from class ELECTRICITY is being invoked
+    return 0;
+}
