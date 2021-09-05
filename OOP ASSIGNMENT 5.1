@@ -1,0 +1,44 @@
+#include <iostream>                     
+using namespace std;
+
+class Employee                                                            //Public class Employee has been defined and declared
+{   
+    public:
+        char e_name[30];
+        int e_id;
+        char e_dept[30];
+        float e_bsal;
+                                                                          //data member  have been declared for the class 'Employee'
+        Employee()                                                        //default constructor has been declared
+        {
+            cout << "\nEnter name of Employee: ";
+            cin >> e_name;
+            cout << "\nEnter the Employee ID: ";
+            cin >> e_id;
+            cout << "\nEnter the department of Employee: ";
+            cin >> e_dept;
+            cout << "\nEnter the base salary of the Employee: ";
+            cin >> e_bsal;
+        }
+        
+        void gross_sal()                                                  //member function to calculate the gross salary of the employee
+        {
+            float DA = 0.5*e_bsal;
+            float HRA = 0.3*e_bsal;
+            float TA = 0.1*e_bsal;
+            float g_sal = e_bsal + DA + HRA + TA;
+            
+            cout << "\nTHE GROSS SALARY OF THE EMPLOYEE IS " << g_sal;
+        }
+    
+};
+
+int main()
+{
+    Employee E;
+    E.e_name;
+    E.e_id;
+    E.e_dept;
+    E.e_bsal;
+    E.gross_sal();
+}
