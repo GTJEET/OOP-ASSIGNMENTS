@@ -1,0 +1,31 @@
+#include <iostream>
+using namespace std;
+
+class Employee                                                //class Employee has been created
+{   
+    public:
+        string e_name;
+        int e_id;
+        string e_dept;
+        float e_bsal;
+                                                             //public data members and member functions are declared and defined in the class 'Employee'
+        Employee(string w, int x, string y, float z)         //Overloaded Constructor has been defined
+        {
+            e_name = w;
+            e_id = x;
+            e_dept = y;
+            e_bsal = z;
+            float DA = 0.5*e_bsal;
+            float HRA = 0.3*e_bsal;
+            float TA = 0.1*e_bsal;
+            float g_sal = e_bsal + DA + HRA + TA;
+            
+            cout << "\nTHE GROSS SALARY OF THE EMPLOYEE IS " << g_sal;
+        }
+
+};
+
+int main()
+{
+    Employee("Jeet", 5005, "Comp.Sc", 35000);                //Parameters for the overloaded constructor has been given for constructor to refer to
+}
