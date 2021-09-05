@@ -1,0 +1,45 @@
+#include <iostream>
+using namespace std;
+
+class Employee                                                          //class 'Employee' has been defined
+{   
+    public:
+        char e_name[30];
+        int e_id;
+        char e_dept[30];
+        float e_bsal;
+                                                                        //public data members have been declared
+        Employee()                                                      //default constructor 'Employee' has been declared
+        {
+            cout << "\nEnter name of Employee: ";
+            cin >> e_name;
+            cout << "\nEnter the Employee ID: ";
+            cin >> e_id;
+            cout << "\nEnter the department of Employee: ";
+            cin >> e_dept;
+            cout << "\nEnter the base salary of the Employee: ";
+            cin >> e_bsal;
+        }
+        
+        void gross_sal()                                               //member function to calculate the gross salaray of the Employee
+        {
+            float DA = 0.5*e_bsal;
+            float HRA = 0.3*e_bsal;
+            float TA = 0.1*e_bsal;
+            float g_sal = e_bsal + DA + HRA + TA;
+            
+            cout << "\nTHE GROSS SALARY OF THE EMPLOYEE IS " << g_sal;
+        }
+        
+        ~Employee()                                                 //the destructor has been defined to destroy the object of class Employee 'E' with a certain code within it
+        {
+            cout << "\n************DESTRUCTOR FOR CLASS EMPLOYEE DEPLOYED. THANK YOU!************";
+        }
+};
+
+int main()
+{
+    Employee E;                                                   //Object E has been declared for the class Employee
+    E.gross_sal();                                                //Object E invokes member function 'gross_sal()' from class Employee 
+    return 0;
+}
