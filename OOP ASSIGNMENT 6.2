@@ -1,0 +1,109 @@
+/******************************************************************************
+
+                                Welcome to GDB Online.
+GDB online is an online compiler and debugger tool for C, C++, Python, Java, PHP, Ruby, Perl,
+C#, VB, Swift, Pascal, Fortran, Haskell, Objective-C, Assembly, HTML, CSS, JS, SQLite, Prolog.
+                Code, Compile, Run and Debug online from anywhere in world.
+
+*******************************************************************************/
+#include <iostream>
+using namespace std;
+
+class Employee                                //class Employee has been defined
+{
+    public:
+        
+        string emp_name;
+        int emp_id;
+        string emp_dept;
+        float emp_msal;
+                                            //data members for the class has been declared
+       void emp_details()                  //function emp_details has been defined to enter the employee details
+        {
+            cout << "Enter the name of employee: ";
+            cin >> emp_name;
+            cout << "Enter the ID Tag of employee: ";
+            cin >> emp_id;
+            cout << "Enter the department in which the employee works in: ";
+            cin >> emp_dept;
+            cout << "Enter the monthly salary of the employee: ";
+            cin >> emp_msal;
+        }
+        
+        friend class Sales;                //friend class Sales has been declared
+};  
+
+class Sales                                //friendly class to Employee, 'Sales' has been declared
+{
+    public:
+        int m_sales;
+        float incentives;
+        float x;
+                                          //data members for Sales has been declared
+        void disp(Employee E)             //disp function displays the detauls of its friendly class Employee and requires the units sold by the employee
+        {
+            cout << "\n\nTHE EMPLOYEE NAME IS " <<E.emp_name;
+            cout << "\nTHE ID OF THE EMPLOYEE IS " <<E.emp_id;
+            cout << "\nTHE DEPARTMENT IN WHICH THE EMPLOYEE SERVES IS "<<E.emp_dept;
+            cout << "\nTHE MONTHLY SALARY OF THE EMPLOYEE IS "<<E.emp_msal;
+            cout << "\nENTER THE NUMBER OF UNITS SOLD MONTHLY: ";
+            cin >> m_sales;
+                                                                  //incentives to be given along with monthly salary is being calculated as well using if statements
+            if(m_sales<50 && m_sales>0)
+            {
+                x = 0;
+                incentives = x*E.emp_msal;
+                cout << "\nIncentives to be received by the employee at the end of the month is " << incentives;
+            }
+            else if(m_sales>=50 && m_sales<100)
+            {
+                x = 0.10;
+                incentives = x*E.emp_msal;
+                cout << "\nIncentives to be received by the employee at the end of the month is " << incentives;
+            }
+            else if(m_sales>=100 && m_sales<150)
+            {
+                x = 0.20;
+                incentives = x*E.emp_msal;
+                cout << "\nIncentives to be received by the employee at the end of the month is " << incentives;
+            }
+            else if(m_sales>=150)
+            {
+                x = 0.30;
+                incentives = x*E.emp_msal;
+                cout << "\nIncentives to be received by the employee at the end of the month is " << incentives;
+            }
+        }
+        
+        void Performance()                       //Performace function determines the performance in sales of the Employee depending on the number of units sold by him/her          
+        {
+            if(m_sales < 50)
+            {
+                cout << "\nPERFORMANCE IS POOR";
+            }
+            else if(m_sales >= 50 && m_sales <= 100)
+            {
+                cout << "\nPERFORMANCE IS SATISFACTORY";
+            }
+            else if(m_sales >= 101 && m_sales <=150)
+            {
+                cout << "\nPERFORMANCE IS GOOD";
+            }
+            else if(m_sales > 150)
+            {
+                cout << "\nPERFORMANCE IS EXCELLENT";
+            }
+        }
+};
+
+int main()
+{
+    Employee A;                             //object A has been assigned to class Employee
+    Sales B;                                //object B has been assigned to class Sales
+    A.emp_details();                        
+    B.disp(A);                              //friendly class can access the disp() function and its contents
+    B.Performance();                        //Prints out the performance of the employee, present in Sales using the object 'B' 
+    return 0;
+}
+
+
