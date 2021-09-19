@@ -1,0 +1,170 @@
+/******************************************************************************
+
+Welcome to GDB Online.
+GDB online is an online compiler and debugger tool for C, C++, Python, PHP, Ruby, 
+C#, VB, Perl, Swift, Prolog, Javascript, Pascal, HTML, CSS, JS
+Code, Compile, Run and Debug online from anywhere in world.
+
+*******************************************************************************/
+#include <iostream>
+using namespace std;
+
+class Internal1
+{
+    public:
+    
+        float i_Math;
+        float i_OOP;
+        float i_SE;
+        float i_DS;
+        
+        Internal1()
+        {
+            cout<<"\nEnter Internal marks obtained in Mathematics: ";
+            cin >> i_Math;
+            cout<<"\nEnter Internal marks obtained in OOP: ";
+            cin >> i_OOP;
+            cout<<"\nEnter Internal marks obtained in SE: ";
+            cin >> i_SE;
+            cout<<"\nEnter Internal marks obtained in DS: ";
+            cin >> i_DS;
+        }
+    friend class details;
+};
+
+class External1
+{
+    public:
+        
+        float e_Math;
+        float e_OOP;
+        float e_SE;
+        float e_DS;
+        
+        External1()
+        {
+            cout<<"\nEnter External marks obtained in Mathematics: ";
+            cin >> e_Math;
+            cout<<"\nEnter External marks obtained in OOP: ";
+            cin >> e_OOP;
+            cout<<"\nEnter External marks obtained in SE: ";
+            cin >> e_SE;
+            cout<<"\nEnter External marks obtained in DS: ";
+            cin >> e_DS;
+        }
+    friend class details;
+};
+
+
+class details
+{
+    public:
+    
+    float i_Math;
+    float i_OOP;
+    float i_SE;
+    float i_DS;
+    
+    float e_Math;
+    float e_OOP;
+    float e_SE;
+    float e_DS;
+    
+    float t_Math = i_Math+e_Math;
+    float t_OOP = i_OOP + e_OOP;
+    float t_SE = i_SE + e_SE;
+    float t_DS = i_DS + e_DS;
+    
+    float ans;
+    float res;
+        
+    void print_t_marks(Internal1&&External1)
+    {
+        cout << "\nTHE TOTAL MARKS FOR MATH IS: " << t_Math;
+        cout << "\nTHE TOTAL MARKS FOR OOP IS: " << t_OOP;
+        cout << "\nTHE TOTAL MARKS FOR SE IS: " << t_SE;
+        cout << "\nTHE TOTAL MARKS FOR DS IS: " << t_DS;
+    }
+    
+    void print_ind(Internal1&&External1)
+    {
+        //prints result depending on individual subject marks, marks<50 = fail
+        if(t_Math >= 50)
+        {
+            cout << "\nPASS IN MATH WITH " << t_Math << "%";
+        }
+        else if(t_Math < 50)
+        {
+            cout << "\nFAIL IN MATH";
+        }
+        
+        if(t_OOP >= 50)
+        {
+            cout << "\nPASS IN OOP WITH " <<t_Math <<"%";
+        }
+        else if(t_OOP < 50)
+        {
+            cout << "\nFAIL IN OOP";
+        }
+        
+        if(t_SE >= 50)
+        {
+            cout << "\nPASS IN SE WITH "<<t_SE << "%";
+        }
+        else if(t_SE < 50)
+        {
+            cout << "\nFAIL IN SE";
+        }
+        
+        if(t_DS >= 50)
+        {
+            cout << "\nPASS IN DS WITH " << t_DS <<"%";
+        }
+        else if(t_DS < 50)
+        {
+            cout << "\nFAIL IN DS";
+        }
+    }
+    
+    void total_marks(Internal1&&External1)
+    {
+        //calculate total marks
+        ans = t_DS+t_SE+t_OOP+t_Math;
+        cout << "\n\nTHE TOTAL SCORE IS " << ans;
+    }
+
+    void percentage(Internal1&&External1)
+    {
+        //print percentage if student passes
+        res = ans/4;
+        if(res > 50)
+            cout << "THE PERCENTAGE OF THE STUDENT OBTAINED IN ALL SUBJECTS IS " << res << "%";
+        else
+            cout << "YOU HAVE FAILED SINCE THE AGGREGATE IS NOT ENOUGH TO PASS IN ALL SUBJECTS";
+    }
+};
+
+int main()
+{
+    Internal1 I;
+    External1 E;
+    details D;
+    
+    I.i_Math;
+    I.i_OOP;
+    I.i_SE;
+    I.i_DS;
+    
+    E.e_Math;
+    E.e_OOP;
+    E.e_SE;
+    E.e_DS;
+    
+    D.print_t_marks(I&&E);
+    D.print_ind(I&&E);
+    D.total_marks(I&&E);
+    D.percentage(I&&E);
+    
+    return 0;
+    
+}
