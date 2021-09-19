@@ -1,15 +1,15 @@
 /******************************************************************************
 
-Welcome to GDB Online.
+                            Welcome to GDB Online.
 GDB online is an online compiler and debugger tool for C, C++, Python, PHP, Ruby, 
-C#, VB, Perl, Swift, Prolog, Javascript, Pascal, HTML, CSS, JS
-Code, Compile, Run and Debug online from anywhere in world.
+         C#, VB, Perl, Swift, Prolog, Javascript, Pascal, HTML, CSS, JS
+           Code, Compile, Run and Debug online from anywhere in world.
 
 *******************************************************************************/
 #include <iostream>
 using namespace std;
 
-class Internal1
+class Internal1                                     //defining a class Internal1 with public member functions and data members
 {
     public:
     
@@ -29,10 +29,10 @@ class Internal1
             cout<<"\nEnter Internal marks obtained in DS: ";
             cin >> i_DS;
         }
-    friend class details;
+    friend class details;                                           //friend class 'details' has been declared
 };
 
-class External1
+class External1                                                     //public class 'External1' has been defined with data members and member functions
 {
     public:
         
@@ -52,11 +52,11 @@ class External1
             cout<<"\nEnter External marks obtained in DS: ";
             cin >> e_DS;
         }
-    friend class details;
+    friend class details;                                           //friend class 'datails' has also been declared
 };
 
 
-class details
+class details                                                   //details is a friend class of Internal1 and External1 and is used to calculate the sub-questions
 {
     public:
     
@@ -78,7 +78,7 @@ class details
     float ans;
     float res;
         
-    void print_t_marks(Internal1&&External1)
+    void print_t_marks(Internal1&&External1)                                //prints out total marks for each subject
     {
         cout << "\nTHE TOTAL MARKS FOR MATH IS: " << t_Math;
         cout << "\nTHE TOTAL MARKS FOR OOP IS: " << t_OOP;
@@ -86,7 +86,7 @@ class details
         cout << "\nTHE TOTAL MARKS FOR DS IS: " << t_DS;
     }
     
-    void print_ind(Internal1&&External1)
+    void print_ind(Internal1&&External1)                            //prints out pass or fail status in individual subjects
     {
         //prints result depending on individual subject marks, marks<50 = fail
         if(t_Math >= 50)
@@ -126,14 +126,14 @@ class details
         }
     }
     
-    void total_marks(Internal1&&External1)
+    void total_marks(Internal1&&External1)                          //total marks for every subject is calculated
     {
         //calculate total marks
         ans = t_DS+t_SE+t_OOP+t_Math;
         cout << "\n\nTHE TOTAL SCORE IS " << ans;
     }
 
-    void percentage(Internal1&&External1)
+    void percentage(Internal1&&External1)                           //percentage of the total marks obtained is printed if the person has passed in all subjects.
     {
         //print percentage if student passes
         res = ans/4;
@@ -145,7 +145,7 @@ class details
 };
 
 int main()
-{
+{   //objects for their respective classes have been made along with constructors for different classes and for accessing their member functions
     Internal1 I;
     External1 E;
     details D;
