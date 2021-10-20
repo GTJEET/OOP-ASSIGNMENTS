@@ -1,0 +1,242 @@
+/******************************************************************************
+
+                                Welcome to GDB Online.
+GDB online is an online compiler and debugger tool for C, C++, Python, PHP, Ruby, 
+        C#, VB, Perl, Swift, Prolog, Javascript, Pascal, HTML, CSS, JS
+          Code, Compile, Run and Debug online from anywhere in world.
+
+*******************************************************************************/
+#include <iostream>
+#include <fstream>
+#include <iomanip>
+#include <stdio.h>
+#include <conio.h>
+#include <stdlib.h>
+#define TRUE 1
+using namespace std;
+fstream file;
+
+class item
+{
+    private:
+        int code;
+        string name;
+        int qty;
+        
+    public:
+        void get_item()
+        {
+            cout << "Enter Item code: ";
+            cin >> code;
+            cout << "Enter Item Name: ";
+            cin >> name;
+            cout << "Enter quantity: ";
+            cin >> qty;
+        }
+        void put_item()
+        {
+            cout << setw(6) << code << setw(15) << name << setw(6) << qty << endl;
+        }
+        void get_code()
+        {
+            cout << "Enter your code: ";
+            cin >> code;
+        }
+        void update_qty(int num)
+        {
+            qty = qty - num;
+        }
+};
+
+int main()
+{
+    item it;
+    int option;
+    while(TRUE)
+    {
+        system("cls");
+        cout << "*****MAIN MENU*****" << endl;
+        cout << "1. ADD NEW RECORD" << endl;
+        cout << "2. DISPLAY ALL RECORDS" << endl;
+        cout << "3. SEARCH ROLL NUMBER" << endl;
+        cout << "4. DELETE RECORD" << endl;
+        cout << "5. UPDATE RECORD" << endl;
+        cout << "6. EXIT" << endl;
+        cout << "ENTER OPTION NUMBER: ";
+        cin >> option;
+        
+    void add_record()
+    {
+        char ch = 'y';
+        file.open("stock.dat", ios::app | ios::binary);
+        while(ch=='y' || ch == 'Y')
+        {
+            it.get_item();
+            file.write((char*)&it,sizeof(it));
+            cout << "Add more records? (y/n)";
+            cin >> ch;
+        }   
+        file.close();
+    }
+
+    void show_all()
+    {
+        file.open("stock.dat", ios::in | ios::binary);
+        if(!file)
+        {
+            cout << "File not found";
+            exit(0);
+        }
+        else 
+        {
+            file.read((char*)&it, sizeof(it));
+             while(!file.eof())
+            {
+                it.put_item();
+                file.read((char*)&it, sizeof(it));
+            }
+        }
+    }
+
+    void show_record()
+    {
+        int no, flag = 0;
+        file.open("stack.dat", ios::in | ios::binary);
+        if(!file)
+        {
+            cout << "File not found";
+            exit(0);
+        }
+        else
+        {
+            cout << "Enter the item code to search: ";
+            cin >> no;
+            file.read((char*)&it, sizeof(it));
+            while(!file.eof())
+            {
+                if(no==it.get_code())
+                {
+                    flag = 1;
+                    cout << "------------------------------------------------------------------------\n";
+                    cout << setw(6) << "CODE" << setw(15) << "ITEM NAME" << setw(6) << "QTY" << endl;
+                    cout << "------------------------------------------------------------------------\n";
+                    it.put_item();
+                    cout << "------------------------------------------------------------------------\n";
+                    break;
+                }
+                file.read((char*)&it, sizeof(it));
+            }
+            if(flag == 0)
+            {
+                cout << "File not found.\n";
+            }
+        }   
+        file.close();
+    }
+
+    void delete_record()
+    {
+        int no;
+        cout << "Enter item code to delete: ";
+        cin >> no;
+        ofstream file2;
+        file2.open("new.dat", ios::out|ios::binary);
+        file.open("stock.dat", ios::in|ios::binary);
+        if(!file)
+        {
+            cout << "File not found";
+            exit(0);
+        }
+        else
+        {
+            file.read((char*)&it, sizeof(it));
+            while(!file.eof())
+            {
+                if(no!=it.get_code())
+                {
+                    file2.write((char*)&it, sizeof(it));
+                }
+                file.read((char*)&it, sizeof(it));
+            }
+        }
+    
+        file2.close();
+        file.close();
+        remove("stock.dat");
+        rename("name.dat", "stock.dat");
+    }
+
+    void modify_record()
+    {
+        int no, num;
+        cout << "Enter item code to modify: ";
+        cin >> no;
+        cout << "Enter number of Items issued: ";
+        cin >> num;
+        file.open("stock.dat", ios::in | ios::out | ios::binary);
+        if(!file)
+        {
+            cout << "File not found";
+            exit(0);
+        }
+        while(file.read((char*)&it, sizeof(it)))
+        {
+            if(it.get_code() == no)
+            {
+                it.update_qty(num);
+                int pos = sizeof(it);
+                file.seekp(-pos, ios::cur);
+                file.write((char*)&it, sizeof(it));
+            }
+        }
+        file.close();
+    }
+
+        
+        switch(option)
+        {
+            case 1: {
+                        add_record();
+                        cout << "PRESS ANY KEY TO RETURN TO THE MAIN MENU . . .";
+                        getch();
+                        break;
+                    }
+            case 2: {
+                        cout << "-----------------------------------------------------------------------\n";
+                        cout << setw(6) << "CODE" << setw(15) << "ITEM NAME" << setw(6) << "QTY" << endl;
+                        cout << "-----------------------------------------------------------------------\n";
+                        show_all();
+                        cout << "-----------------------------------------------------------------------\n";
+                        cout << "PRESS ANY KEY TO RETURN TO THE MAIN MENU . . .";
+                        getch();
+                        break;
+                    }
+            case 3: {
+                        show_record();
+                        cout << "PRESS ANY KEY TO RETURN TO THE MAIN MENU . . .";
+                        getch();
+                        break;
+                    }
+            case 4: {
+                        delete_record();
+                        cout << "PRESS ANY KEY TO RETURN TO THE MAIN MENU . . .";
+                        getch();
+                        break;
+                    }
+            case 5: {
+                        modify_record();
+                        cout << "PRESS ANY KEY TO RETURN TO THE MAIN MENU . . .";
+                        getch();
+                        break;
+                    }
+            case 6: {
+                        exit(0);
+                    }
+            default:{
+                        cout << "Incorrect Option, press any key for main menu. . .";
+                        getch();
+                        break;
+                    }
+        }
+    }
+}  
